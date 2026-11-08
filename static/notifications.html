@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notifications | DLSL Club Finder</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 800px; margin: 30px auto; padding: 0 16px; }
+    a { color: #1a5fb4; }
+    .box { border: 1px solid #ccc; border-radius: 8px; padding: 10px 14px; margin-bottom: 10px; }
+    .unread { border-left: 4px solid #1a5fb4; background: #f3f7fc; }
+    .unread .msg { font-weight: bold; }
+    .small { color: #666; font-size: 14px; }
+    button { padding: 8px 18px; font-size: 15px; cursor: pointer; margin-bottom: 16px; }
+  </style>
+</head>
+<body>
+  <p><a href="/">&larr; Back to all clubs</a></p>
+  <h1>Notifications</h1>
+  <p class="small">You get a notification when a club you follow posts an announcement or an event. Follow a club from its page.</p>
+  <button id="read">Mark all as read</button>
+  <div id="list">Loading...</div>
+
+  <script>
+    const list = document.getElementById("list");
+
+    async function load() {
+      const r = await fetch("/api/notifications");
+      if (r.status === 401) { location.href = "/static/login.html"; return; }
+      const d = await r.json().catch(() => ({}));
+      if (!r.ok) { list.textContent = "Could not load notifications."; return; }
+      list.innerHTML = "";
+      if (d.items.length === 0) { list.textContent = "No notifications yet."; return; }
+      d.items.forEach(n => {
+        const box = document.createElement("div");
+        box.className = n.read ? "box" : "box unread";
+        const msg = document.createElement("div");
+        msg.className = "msg";
+        msg.textContent = n.message;
+        const when = document.createElement("div");
+        when.className = "small";
+        when.textContent = n.date;
+        box.append(msg, when);
+        if (n.announcement_id) {
+          const link = document.createElement("a");
+          link.href = "/static/announcement.html?id=" + n.announcement_id;
+          link.textContent = "Read announcement";
+          box.appendChild(link);
+        } else if (n.club_id) {
+          const link = document.createElement("a");
+          link.href = "/static/club.html?id=" + n.club_id;
+          link.textContent = "View club";
+          box.appendChild(link);
+        }
+        list.appendChild(box);
+      });
+    }
+
+    document.getElementById("read").onclick = async () => {
+      await fetch("/api/notifications/read", {method: "POST"});
+      load();
+    };
+    load();
+  </script>
+</body>
+</html>
