@@ -1,0 +1,93 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeCXXInformation.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeCommonLanguageInclude.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDependentOption.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeFindDependencyMacro.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeGenericSystem.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeInitializeConfigs.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeLanguageInformation.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeRCInformation.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeSystemSpecificInformation.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeSystemSpecificInitialize.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CheckCXXSourceCompiles.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CheckIncludeFileCXX.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CheckLibraryExists.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/Compiler/CMakeCommonCompilerMacros.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/Compiler/MSVC-CXX.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/Compiler/MSVC.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/FindOpenSSL.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/FindPackageMessage.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/FindThreads.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/FindZLIB.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/Internal/CMakeCXXLinkerInformation.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/Internal/CMakeCommonLinkerInformation.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/Internal/CheckSourceCompiles.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/Linker/MSVC-CXX.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/Linker/MSVC.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/Platform/Linker/Windows-MSVC-CXX.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/Platform/Linker/Windows-MSVC.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/Platform/Windows-Initialize.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/Platform/Windows-MSVC-CXX.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/Platform/Windows-MSVC.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/Platform/Windows.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/Platform/WindowsPaths.cmake
+C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/SelectLibraryConfigurations.cmake
+C:/Users/Jsonm/OneDrive/Documents/club finder/CMakeLists.txt
+C:/Users/Jsonm/OneDrive/Documents/club finder/build/CMakeFiles/4.3.1-msvc1/CMakeCXXCompiler.cmake
+C:/Users/Jsonm/OneDrive/Documents/club finder/build/CMakeFiles/4.3.1-msvc1/CMakeRCCompiler.cmake
+C:/Users/Jsonm/OneDrive/Documents/club finder/build/CMakeFiles/4.3.1-msvc1/CMakeSystem.cmake
+C:/vcpkg/installed/x64-windows-static/share/absl/abslConfig.cmake
+C:/vcpkg/installed/x64-windows-static/share/absl/abslConfigVersion.cmake
+C:/vcpkg/installed/x64-windows-static/share/absl/abslTargets-debug.cmake
+C:/vcpkg/installed/x64-windows-static/share/absl/abslTargets-release.cmake
+C:/vcpkg/installed/x64-windows-static/share/absl/abslTargets.cmake
+C:/vcpkg/installed/x64-windows-static/share/asio/asio-config.cmake
+C:/vcpkg/installed/x64-windows-static/share/asio/asio-targets.cmake
+C:/vcpkg/installed/x64-windows-static/share/crow/CrowConfig.cmake
+C:/vcpkg/installed/x64-windows-static/share/crow/CrowTargets.cmake
+C:/vcpkg/installed/x64-windows-static/share/curl/CURLConfig.cmake
+C:/vcpkg/installed/x64-windows-static/share/curl/CURLConfigVersion.cmake
+C:/vcpkg/installed/x64-windows-static/share/curl/CURLTargets-debug.cmake
+C:/vcpkg/installed/x64-windows-static/share/curl/CURLTargets-release.cmake
+C:/vcpkg/installed/x64-windows-static/share/curl/CURLTargets.cmake
+C:/vcpkg/installed/x64-windows-static/share/curl/vcpkg-cmake-wrapper.cmake
+C:/vcpkg/installed/x64-windows-static/share/lz4/lz4Config.cmake
+C:/vcpkg/installed/x64-windows-static/share/lz4/lz4ConfigVersion.cmake
+C:/vcpkg/installed/x64-windows-static/share/lz4/lz4Targets-debug.cmake
+C:/vcpkg/installed/x64-windows-static/share/lz4/lz4Targets-release.cmake
+C:/vcpkg/installed/x64-windows-static/share/lz4/lz4Targets.cmake
+C:/vcpkg/installed/x64-windows-static/share/openssl/vcpkg-cmake-wrapper.cmake
+C:/vcpkg/installed/x64-windows-static/share/protobuf/protobuf-config-version.cmake
+C:/vcpkg/installed/x64-windows-static/share/protobuf/protobuf-config.cmake
+C:/vcpkg/installed/x64-windows-static/share/protobuf/protobuf-generate.cmake
+C:/vcpkg/installed/x64-windows-static/share/protobuf/protobuf-module.cmake
+C:/vcpkg/installed/x64-windows-static/share/protobuf/protobuf-options.cmake
+C:/vcpkg/installed/x64-windows-static/share/protobuf/protobuf-targets-debug.cmake
+C:/vcpkg/installed/x64-windows-static/share/protobuf/protobuf-targets-release.cmake
+C:/vcpkg/installed/x64-windows-static/share/protobuf/protobuf-targets-vcpkg-protoc.cmake
+C:/vcpkg/installed/x64-windows-static/share/protobuf/protobuf-targets.cmake
+C:/vcpkg/installed/x64-windows-static/share/protobuf/vcpkg-cmake-wrapper.cmake
+C:/vcpkg/installed/x64-windows-static/share/rapidjson/RapidJSON-targets.cmake
+C:/vcpkg/installed/x64-windows-static/share/rapidjson/RapidJSONConfig.cmake
+C:/vcpkg/installed/x64-windows-static/share/rapidjson/RapidJSONConfigVersion.cmake
+C:/vcpkg/installed/x64-windows-static/share/unofficial-libmysql/unofficial-libmysql-config.cmake
+C:/vcpkg/installed/x64-windows-static/share/unofficial-libmysql/unofficial-libmysql-targets-debug.cmake
+C:/vcpkg/installed/x64-windows-static/share/unofficial-libmysql/unofficial-libmysql-targets-release.cmake
+C:/vcpkg/installed/x64-windows-static/share/unofficial-libmysql/unofficial-libmysql-targets.cmake
+C:/vcpkg/installed/x64-windows-static/share/unofficial-mysql-connector-cpp/unofficial-mysql-connector-cpp-config.cmake
+C:/vcpkg/installed/x64-windows-static/share/unofficial-mysql-connector-cpp/unofficial-mysql-connector-cpp-targets-debug.cmake
+C:/vcpkg/installed/x64-windows-static/share/unofficial-mysql-connector-cpp/unofficial-mysql-connector-cpp-targets-release.cmake
+C:/vcpkg/installed/x64-windows-static/share/unofficial-mysql-connector-cpp/unofficial-mysql-connector-cpp-targets.cmake
+C:/vcpkg/installed/x64-windows-static/share/unofficial-sodium/unofficial-sodiumConfig.cmake
+C:/vcpkg/installed/x64-windows-static/share/utf8_range/utf8_range-config.cmake
+C:/vcpkg/installed/x64-windows-static/share/utf8_range/utf8_range-targets-debug.cmake
+C:/vcpkg/installed/x64-windows-static/share/utf8_range/utf8_range-targets-release.cmake
+C:/vcpkg/installed/x64-windows-static/share/utf8_range/utf8_range-targets.cmake
+C:/vcpkg/installed/x64-windows-static/share/zlib/vcpkg-cmake-wrapper.cmake
+C:/vcpkg/installed/x64-windows-static/share/zstd/zstdConfig.cmake
+C:/vcpkg/installed/x64-windows-static/share/zstd/zstdConfigVersion.cmake
+C:/vcpkg/installed/x64-windows-static/share/zstd/zstdTargets-debug.cmake
+C:/vcpkg/installed/x64-windows-static/share/zstd/zstdTargets-release.cmake
+C:/vcpkg/installed/x64-windows-static/share/zstd/zstdTargets.cmake
+C:/vcpkg/scripts/buildsystems/vcpkg.cmake

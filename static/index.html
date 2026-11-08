@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DLSL Club Finder</title>
+  <style>
+    :root {
+        --bg: #f5f8f6;
+        --card: #fff;
+        --border: #d3ddd6;
+        --text: #1f2a24;
+        --muted: #5f6b64;
+        --accent: #0b6b3a;
+        --good: #2e7d32;
+        --bad: #b3261e;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { border-top: 6px solid var(--accent); }
+
+    body {
+        font-family: system-ui, Arial, sans-serif;
+        max-width: 800px;
+        margin: 30px auto;
+        padding: 0 16px;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.5;
+    }
+
+    a { color: var(--accent); }
+    h1 { font-size: 1.7rem; }
+    h2 { font-size: 1.2rem; margin-top: 32px; padding-bottom: 4px; border-bottom: 1px solid var(--border); }
+    label { display: block; font-weight: 600; margin: 12px 0 4px; }
+
+    input, select, textarea {
+        width: 100%;
+        padding: 10px;
+        font: inherit;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+    }
+    input:focus, select:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+    input[type="checkbox"] { width: auto; }
+    textarea { resize: vertical; }
+
+    button {
+        padding: 9px 18px;
+        margin-top: 12px;
+        font: inherit;
+        color: #fff;
+        background: var(--accent);
+        border: 1px solid var(--accent);
+        border-radius: 6px;
+        cursor: pointer;
+    }
+    button:hover { opacity: .9; }
+
+    .club, .box, .row, .manage, .form-container {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 12px 16px;
+        margin-bottom: 10px;
+    }
+    .club h3 { margin: 0 0 6px; }
+
+    .row, .qa-row { display: flex; gap: 10px; align-items: center; }
+    .row { padding: 8px 12px; }
+    .qa-row { margin-top: 10px; }
+    .grow { flex: 1; }
+    .row select, .qa-row select { width: auto; }
+    .row button, .qa-row button { margin: 0; padding: 6px 14px; }
+
+    .manage-toggle, .del, .del-btn, .att-btn {
+        color: var(--accent);
+        background: transparent;
+        border-color: var(--accent);
+    }
+    .manage-toggle:hover, .att-btn:hover { background: var(--accent); color: #fff; opacity: 1; }
+    .del, .del-btn { color: var(--bad); border-color: var(--bad); }
+    .del-btn:hover { background: var(--bad); color: #fff; opacity: 1; }
+    .del-btn, .att-btn { margin-top: 8px; padding: 4px 12px; font-size: .9rem; }
+    .att-btn { margin-left: 8px; }
+    .qa-row .del-btn { margin-top: 0; }
+
+    .answer { margin: 6px 0 0 18px; padding-left: 10px; border-left: 3px solid var(--accent); }
+    .pinned { font-weight: 600; }
+    .att-panel { margin-top: 10px; padding-top: 6px; border-top: 1px dashed var(--border); }
+    .manage { margin: 16px 0; padding: 16px 20px; }
+    .manage h1 { font-size: 1.3rem; margin: 0 0 8px; }
+    .manage h2 { font-size: 1.05rem; margin: 0 0 8px; border: 0; padding: 0; }
+    .manage .form-group { margin-bottom: 12px; }
+    .manage .checkbox-group { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+    .manage .checkbox-group label { margin: 0; }
+    .manage .section-divider { margin: 28px 0 20px; border: 0; border-top: 1px solid var(--border); }
+    .manage .submit-btn-container { text-align: left; }
+    .manage .err { text-align: left; }
+
+    .unread { border-left: 4px solid var(--accent); }
+    .unread .msg { font-weight: 600; }
+
+    .small { color: var(--muted); font-size: .9rem; }
+    .open, .ok { color: var(--good); }
+    .open { font-weight: 600; }
+    .closed, .err, .msg { color: var(--bad); }
+    .msg.ok { color: var(--good); }
+    .err, .ok, .msg { min-height: 1.2em; }
+
+    .form-container { max-width: 420px; margin: 40px auto; padding: 24px; }
+    .form-group { margin-bottom: 16px; }
+    .btn-submit { width: 100%; }
+    .footer-text { margin-top: 20px; }
+    .footer-text span { color: var(--accent); text-decoration: underline; cursor: pointer; }
+    .hidden { display: none; }
+    
+    #body { white-space: pre-wrap; margin-top: 20px; font-size: 1.05rem; }
+    .tag {
+        display: inline-block;
+        padding: 2px 10px;
+        margin-right: 6px;
+        font-size: .8rem;
+        color: var(--accent);
+        border: 1px solid var(--accent);
+        border-radius: 12px;
+    }
+
+    input:not([type="checkbox"]), select {
+        border-radius: 25px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    textarea {
+        border-radius: 14px;      
+        padding: 10px 16px;
+    }
+    button {
+        border-radius: 25px;
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+    .club, .box, .manage, .form-container { border-radius: 14px; }
+
+    /* filter and sort dropdowns */
+    #search { margin-bottom: 12px; }
+    .controls { display: flex; gap: 10px; margin-bottom: 16px; }
+    .controls select { flex: 1; width: auto; }
+  </style>
+
+</head>
+<body>
+  <div id="nav" style="text-align:right"></div>
+  <h1>DLSL Club Finder</h1>
+  <input id="search" placeholder="Search clubs...">
+  <div class="controls">
+    <select id="filter">
+      <option value="all">All clubs</option>
+      <option value="academic">Academic</option>
+      <option value="non-academic">Non-academic</option>
+    </select>
+    <select id="sort">
+      <option value="asc">Sort: A-Z</option>
+      <option value="desc">Sort: Z-A</option>
+    </select>
+  </div>
+  <div id="list">Loading...</div>
+
+  <script>
+
+
+    // Shows who is logged in, loads the club list from /api/clubs, and lets the person search, filter
+    // (Academic or Non-academic) and sort (A-Z or Z-A). The sorting is a merge sort written by hand.
+
+    let allClubs = [];
+
+    // Merge sort, written by hand (a divide and conquer algorithm that uses recursion).
+    // It splits the list in half, sorts each half by calling itself, then merges the two sorted halves.
+    // before(a, b) is a function that says whether a belongs before b, so one mergeSort can sort A-Z or Z-A.
+    
+    function mergeSort(list, before) {
+      if (list.length <= 1) return list;                       // base case: 0 or 1 items are already sorted
+      const mid = Math.floor(list.length / 2);
+      const left = mergeSort(list.slice(0, mid), before);      // sort the left half
+      const right = mergeSort(list.slice(mid), before);        // sort the right half
+      const merged = [];
+      let i = 0, j = 0;
+      while (i < left.length && j < right.length) {            // always take the smaller front item
+        if (before(right[j], left[i])) merged.push(right[j++]);
+        else merged.push(left[i++]);
+      }
+      while (i < left.length) merged.push(left[i++]);          // one side ran out, copy what is left
+      while (j < right.length) merged.push(right[j++]);
+      return merged;
+    }
+
+    // Runs every time the person types or changes a dropdown: search, then filter by type, then sort.
+    function update() {
+      const q = document.getElementById("search").value.toLowerCase();
+      const filter = document.getElementById("filter").value;
+      const order = document.getElementById("sort").value;
+
+      const matches = allClubs.filter(c => {
+        const category = (c.category || "").toLowerCase();
+        const textMatch = c.name.toLowerCase().includes(q) || category.includes(q);
+        const isAcademic = category === "academic";
+        const typeMatch = filter === "all" ||
+                          (filter === "academic" && isAcademic) ||
+                          (filter === "non-academic" && !isAcademic);
+        return textMatch && typeMatch;
+      });
+
+      const before = order === "asc"
+        ? (a, b) => a.name.toLowerCase() < b.name.toLowerCase()
+        : (a, b) => a.name.toLowerCase() > b.name.toLowerCase();
+
+      show(mergeSort(matches, before));
+    }
+
+    function show(clubs) {
+      const list = document.getElementById("list");
+      list.innerHTML = "";
+      if (clubs.length === 0) { list.textContent = "No clubs found."; return; }
+      clubs.forEach(c => {
+        const div = document.createElement("div");
+        div.className = "club";
+        const h = document.createElement("h3");
+        const link = document.createElement("a");
+        link.href = "/static/club.html?id=" + c.id;
+        link.textContent = c.name;
+        h.appendChild(link);
+        const info = document.createElement("div");
+        info.textContent = (c.category || "No category") + " | " + c.status +
+                           (c.schedule ? " | " + c.schedule : "");
+        const rec = document.createElement("div");
+        rec.textContent = "Recruitment: " + c.recruitment;
+        rec.className = c.recruitment === "Open" ? "open" : "closed";
+        div.append(h, info, rec);
+        list.appendChild(div);
+      });
+    }
+
+    fetch("/api/me").then(r => r.ok ? r.json() : null).then(me => {
+      const nav = document.getElementById("nav");
+      if (me) {
+        if (me.system_role === "super_admin") {
+          const adm = document.createElement("a");
+          adm.href = "/static/admin.html"; adm.textContent = "Admin";
+          nav.append(adm, " | ");
+        }
+        const notif = document.createElement("a");
+        notif.href = "/static/notifications.html";
+        notif.textContent = "Notifications";
+        nav.append(notif, " | ");
+        fetch("/api/notifications").then(r => r.ok ? r.json() : null).then(d => {
+          if (d && d.unread > 0) notif.textContent = "Notifications (" + d.unread + ")";
+        });
+        nav.append("Hi, " + me.name + " | ");
+        const out = document.createElement("a");
+        out.href = "#"; out.textContent = "Logout";
+        out.onclick = e => { e.preventDefault(); fetch("/api/logout", {method: "POST"}).then(() => location.reload()); };
+        nav.appendChild(out);
+      } else {
+        nav.innerHTML = '<a href="/static/login.html">Login</a> | <a href="/static/login.html#signup">Sign up</a>';
+      }
+    });
+
+    fetch("/api/clubs")
+      .then(r => {
+        if (r.status === 401) { location.href = "/static/login.html"; return Promise.reject(); }
+        return r.json();
+      })
+      .then(data => { allClubs = data; update(); })
+      .catch(() => { document.getElementById("list").textContent = "Could not load clubs."; });
+
+    document.getElementById("search").addEventListener("input", update);
+    document.getElementById("filter").addEventListener("change", update);
+    document.getElementById("sort").addEventListener("change", update);
+  </script>
+
+</body>
+</html>

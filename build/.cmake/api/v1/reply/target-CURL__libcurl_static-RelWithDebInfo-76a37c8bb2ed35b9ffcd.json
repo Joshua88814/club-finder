@@ -1,0 +1,138 @@
+{
+	"abstract" : true,
+	"artifacts" : 
+	[
+		{
+			"path" : "C:/vcpkg/installed/x64-windows-static/lib/libcurl.lib"
+		}
+	],
+	"backtrace" : 9,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"_add_library",
+			"add_library",
+			"include",
+			"_find_package",
+			"find_package",
+			"set_target_properties"
+		],
+		"files" : 
+		[
+			"C:/vcpkg/scripts/buildsystems/vcpkg.cmake",
+			"C:/vcpkg/installed/x64-windows-static/share/curl/CURLTargets.cmake",
+			"C:/vcpkg/installed/x64-windows-static/share/curl/CURLConfig.cmake",
+			"C:/vcpkg/installed/x64-windows-static/share/curl/vcpkg-cmake-wrapper.cmake",
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 4
+			},
+			{
+				"command" : 4,
+				"file" : 4,
+				"line" : 13,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 893,
+				"parent" : 1
+			},
+			{
+				"file" : 3,
+				"parent" : 2
+			},
+			{
+				"command" : 3,
+				"file" : 3,
+				"line" : 15,
+				"parent" : 3
+			},
+			{
+				"file" : 2,
+				"parent" : 4
+			},
+			{
+				"command" : 2,
+				"file" : 2,
+				"line" : 176,
+				"parent" : 5
+			},
+			{
+				"file" : 1,
+				"parent" : 6
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 58,
+				"parent" : 7
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 666,
+				"parent" : 8
+			},
+			{
+				"command" : 5,
+				"file" : 1,
+				"line" : 60,
+				"parent" : 7
+			}
+		]
+	},
+	"codemodelVersion" : 
+	{
+		"major" : 2,
+		"minor" : 10
+	},
+	"id" : "CURL::libcurl_static::@6890427a1f51a3e7e1df",
+	"imported" : true,
+	"interfaceLinkLibraries" : 
+	[
+		{
+			"backtrace" : 10,
+			"id" : "ZLIB::ZLIB::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 10,
+			"fragment" : "bcrypt"
+		},
+		{
+			"backtrace" : 10,
+			"fragment" : "advapi32"
+		},
+		{
+			"backtrace" : 10,
+			"fragment" : "crypt32"
+		},
+		{
+			"backtrace" : 10,
+			"fragment" : "secur32"
+		},
+		{
+			"backtrace" : 10,
+			"fragment" : "ws2_32"
+		},
+		{
+			"backtrace" : 10,
+			"fragment" : "iphlpapi"
+		}
+	],
+	"local" : true,
+	"name" : "CURL::libcurl_static",
+	"nameOnDisk" : "libcurl.lib",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sources" : [],
+	"type" : "STATIC_LIBRARY"
+}

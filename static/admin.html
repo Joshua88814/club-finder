@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin | DLSL Club Finder</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 800px; margin: 30px auto; padding: 0 16px; }
+    h2 { border-bottom: 1px solid #ddd; padding-bottom: 4px; margin-top: 36px; }
+    label { display: block; font-weight: bold; margin: 12px 0 4px; }
+    input, select, textarea { width: 100%; padding: 10px; font-size: 15px; box-sizing: border-box; font-family: inherit; }
+    button { padding: 10px 20px; font-size: 15px; cursor: pointer; margin-top: 12px; }
+    .row { display: flex; gap: 10px; align-items: center; border: 1px solid #ccc; border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; }
+    .row .grow { flex: 1; }
+    .row select { width: auto; }
+    .row button { margin: 0; padding: 6px 14px; }
+    .del { border: 1px solid #a00; color: #a00; background: transparent; border-radius: 8px; }
+    .small { color: #666; font-size: 14px; }
+    .err { color: #a00; min-height: 1.2em; }
+    .ok { color: green; min-height: 1.2em; }
+  </style>
+</head>
+<body>
+  <p><a href="/">&larr; Back to all clubs</a></p>
+  <h1>Admin Interface</h1>
+
+  <h2>Add a club</h2>
+  <label for="c-name">Club name</label><input id="c-name">
+  <label for="c-cat">Category</label><select id="c-cat"></select>
+  <label for="c-desc">Description</label><textarea id="c-desc" rows="3"></textarea>
+  <label for="c-sched">Meeting schedule (optional)</label><input id="c-sched" placeholder="Fridays 3-5 PM">
+  <label for="c-place">Meeting place (optional)</label><input id="c-place" placeholder="MB Building">
+  <label for="c-email">Contact email (optional)</label><input id="c-email">
+  <p id="c-msg" class="err"></p>
+  <button id="c-go">Add club</button>
+
+  <h2>Clubs</h2>
+  <p id="clubs-msg" class="err"></p>
+  <div id="clubs">Loading...</div>
+
+  <h2>Assign an adviser or officer</h2>
+  <label for="s-club">Club</label><select id="s-club"></select>
+  <label for="s-email">Person's DLSL email (they must have signed up)</label><input id="s-email" type="email">
+  <label for="s-role">Role</label>
+  <select id="s-role"><option value="officer">Officer</option><option value="adviser">Adviser</option></select>
+  <label for="s-pos">Position (optional)</label><input id="s-pos" placeholder="President">
+  <p id="s-msg" class="err"></p>
+  <button id="s-go">Assign</button>
+
+  <h2>Current advisers and officers</h2>
+  <p id="staff-msg" class="err"></p>
+  <div id="staff"></div>
+
+  <script>
+    const $ = id => document.getElementById(id);
+    function el(tag, text, cls) {
+      const e = document.createElement(tag);
+      if (text !== undefined) e.textContent = text;
+      if (cls) e.className = cls;
+      return e;
+    }
+    function say(id, text, good) { $(id).className = good ? "ok" : "err"; $(id).textContent = text; }
+
+    async function api(method, url, data) {
+      try {
+        const r = await fetch(url, {method: method, body: data ? JSON.stringify(data) : undefined});
+        const d = await r.json().catch(() => ({}));
+        return {ok: r.ok, status: r.status, d: d};
+      } catch (e) { return {ok: false, status: 0, d: {error: "Could not reach the server"}}; }
+    }
+
+    function fillSelect(select, items, withNone) {
+      select.innerHTML = "";
+      if (withNone) { const o = el("option", "No category"); o.value = ""; select.appendChild(o); }
+      items.forEach(i => { const o = el("option", i.name); o.value = i.id; select.appendChild(o); });
+    }
+
+    async function load() {
+      const r = await api("GET", "/api/admin/data");
+      if (r.status === 401 || r.status === 403) { location.href = "/"; return; }
+      if (!r.ok) { $("clubs").textContent = "Could not load the data."; return; }
+      const d = r.d;
+
+      const chosenClub = $("s-club").value;
+      fillSelect($("c-cat"), d.categories, true);
+      fillSelect($("s-club"), d.clubs, false);
+      if (chosenClub) $("s-club").value = chosenClub;
+
+      const clubs = $("clubs");
+      clubs.innerHTML = "";
+      d.clubs.forEach(c => {
+        const row = el("div", "", "row");
+        row.appendChild(el("span", c.name, "grow"));
+        const sel = el("select");
+        [["active", "Active"], ["inactive", "Inactive"], ["on_hiatus", "On hiatus"]].forEach(o => {
+          const op = el("option", o[1]); op.value = o[0]; sel.appendChild(op);
+        });
+        sel.value = c.status;
+        const btn = el("button", "Save status");
+        btn.onclick = async () => {
+          const res = await api("POST", "/api/admin/clubs/" + c.id + "/status", {status: sel.value});
+          say("clubs-msg", res.ok ? "Saved status for " + c.name : (res.d.error || "Could not save"), res.ok);
+        };
+        row.append(sel, btn);
+        clubs.appendChild(row);
+      });
+
+      const staff = $("staff");
+      staff.innerHTML = "";
+      if (d.staff.length === 0) staff.appendChild(el("p", "No advisers or officers assigned yet.", "small"));
+      d.staff.forEach(s => {
+        const row = el("div", "", "row");
+        row.appendChild(el("span", s.club + ": " + s.person + " (" + s.email + ") - " + s.role + (s.position ? ", " + s.position : ""), "grow"));
+        const btn = el("button", "Remove", "del");
+        btn.onclick = async () => {
+          if (!confirm("Remove " + s.person + " from " + s.club + "?")) return;
+          const res = await api("DELETE", "/api/admin/staff/" + s.club_id + "/" + s.user_id);
+          if (res.ok) load(); else say("staff-msg", res.d.error || "Could not remove", false);
+        };
+        row.appendChild(btn);
+        staff.appendChild(row);
+      });
+    }
+
+    $("c-go").onclick = async () => {
+      const res = await api("POST", "/api/admin/clubs", {
+        name: $("c-name").value.trim(),
+        category_id: $("c-cat").value ? Number($("c-cat").value) : 0,
+        description: $("c-desc").value.trim(),
+        schedule: $("c-sched").value.trim(),
+        place: $("c-place").value.trim(),
+        email: $("c-email").value.trim()
+      });
+      if (res.ok) {
+        ["c-name", "c-desc", "c-sched", "c-place", "c-email"].forEach(i => $(i).value = "");
+        say("c-msg", "Club added.", true);
+        load();
+      } else say("c-msg", res.d.error || "Could not add the club", false);
+    };
+
+    $("s-go").onclick = async () => {
+      const res = await api("POST", "/api/admin/staff", {
+        club_id: Number($("s-club").value),
+        email: $("s-email").value.trim(),
+        staff_role: $("s-role").value,
+        position: $("s-pos").value.trim()
+      });
+      if (res.ok) {
+        $("s-email").value = ""; $("s-pos").value = "";
+        say("s-msg", "Assigned.", true);
+        load();
+      } else say("s-msg", res.d.error || "Could not assign", false);
+    };
+
+    load();
+  </script>
+</body>
+</html>

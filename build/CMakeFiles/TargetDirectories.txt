@@ -1,0 +1,3 @@
+C:/Users/Jsonm/OneDrive/Documents/club finder/build/CMakeFiles/club_finder.dir
+C:/Users/Jsonm/OneDrive/Documents/club finder/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/Jsonm/OneDrive/Documents/club finder/build/CMakeFiles/ZERO_CHECK.dir

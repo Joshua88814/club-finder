@@ -1,0 +1,138 @@
+:root {
+    --bg: #f5f8f6;
+    --card: #fff;
+    --border: #d3ddd6;
+    --text: #1f2a24;
+    --muted: #5f6b64;
+    --accent: #0b6b3a;
+    --good: #2e7d32;
+    --bad: #b3261e;
+}
+
+* { box-sizing: border-box; }
+
+html { border-top: 6px solid var(--accent); }
+
+body {
+    font-family: system-ui, Arial, sans-serif;
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 0 16px;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+}
+
+a { color: var(--accent); }
+h1 { font-size: 1.7rem; }
+h2 { font-size: 1.2rem; margin-top: 32px; padding-bottom: 4px; border-bottom: 1px solid var(--border); }
+label { display: block; font-weight: 600; margin: 12px 0 4px; }
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    font: inherit;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+}
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+input[type="checkbox"] { width: auto; }
+textarea { resize: vertical; }
+
+button {
+    padding: 9px 18px;
+    margin-top: 12px;
+    font: inherit;
+    color: #fff;
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    cursor: pointer;
+}
+button:hover { opacity: .9; }
+
+.club, .box, .row, .manage, .form-container {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+}
+.club h3 { margin: 0 0 6px; }
+
+.row, .qa-row { display: flex; gap: 10px; align-items: center; }
+.row { padding: 8px 12px; }
+.qa-row { margin-top: 10px; }
+.grow { flex: 1; }
+.row select, .qa-row select { width: auto; }
+.row button, .qa-row button { margin: 0; padding: 6px 14px; }
+
+.manage-toggle, .del, .del-btn, .att-btn {
+    color: var(--accent);
+    background: transparent;
+    border-color: var(--accent);
+}
+.manage-toggle:hover, .att-btn:hover { background: var(--accent); color: #fff; opacity: 1; }
+.del, .del-btn { color: var(--bad); border-color: var(--bad); }
+.del-btn:hover { background: var(--bad); color: #fff; opacity: 1; }
+.del-btn, .att-btn { margin-top: 8px; padding: 4px 12px; font-size: .9rem; }
+.att-btn { margin-left: 8px; }
+.qa-row .del-btn { margin-top: 0; }
+
+.answer { margin: 6px 0 0 18px; padding-left: 10px; border-left: 3px solid var(--accent); }
+.pinned { font-weight: 600; }
+.att-panel { margin-top: 10px; padding-top: 6px; border-top: 1px dashed var(--border); }
+.manage { margin: 16px 0; padding: 16px 20px; }
+.manage h1 { font-size: 1.3rem; margin: 0 0 8px; }
+.manage h2 { font-size: 1.05rem; margin: 0 0 8px; border: 0; padding: 0; }
+.manage .form-group { margin-bottom: 12px; }
+.manage .checkbox-group { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.manage .checkbox-group label { margin: 0; }
+.manage .section-divider { margin: 28px 0 20px; border: 0; border-top: 1px solid var(--border); }
+.manage .submit-btn-container { text-align: left; }
+.manage .err { text-align: left; }
+
+.unread { border-left: 4px solid var(--accent); }
+.unread .msg { font-weight: 600; }
+
+.small { color: var(--muted); font-size: .9rem; }
+.open, .ok { color: var(--good); }
+.open { font-weight: 600; }
+.closed, .err, .msg { color: var(--bad); }
+.msg.ok { color: var(--good); }
+.err, .ok, .msg { min-height: 1.2em; }
+
+.form-container { max-width: 420px; margin: 40px auto; padding: 24px; }
+.form-group { margin-bottom: 16px; }
+.btn-submit { width: 100%; }
+.footer-text { margin-top: 20px; }
+.footer-text span { color: var(--accent); text-decoration: underline; cursor: pointer; }
+.hidden { display: none; }
+
+#body { white-space: pre-wrap; margin-top: 20px; font-size: 1.05rem; }
+.tag {
+    display: inline-block;
+    padding: 2px 10px;
+    margin-right: 6px;
+    font-size: .8rem;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 12px;
+}
+
+
+input:not([type="checkbox"]), select {
+    border-radius: 25px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+textarea {
+    border-radius: 14px;      
+}
+button {
+    border-radius: 25px;
+    padding-left: 22px;
+    padding-right: 22px;
+}
+.club, .box, .manage, .form-container { border-radius: 14px; }
