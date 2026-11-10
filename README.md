@@ -182,7 +182,7 @@ These steps are for Windows.
 2. Get the code
 
  - git clone https://github.com/<your-username>/<your-repo>.git
- - cd <your-repo>
+ - cd  <your-repo>
 
 4. Create the database
 
