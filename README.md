@@ -3,7 +3,7 @@ Malisa, Joshua Q.
 Cezar, Jared Andrei S.
 Mercader, Dave Evan
 
-App modules and functions
+APP MODULES
 
 
 Accounts and login	
@@ -76,4 +76,272 @@ Build
 - CMakeLists.txt
 - Tells CMake which files to compile and which libraries to link.e clubs. 
 Only students and teachers with DLSL emails can access the website.
+
+
+
+
+FUNCTIONS
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Not logged in	
+
+- Only the login and sign-up page
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Student, teacher, alumni	
+
+- Browse and search clubs, read announcements and events, follow clubs, ask questions, see notifications
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Club officer or adviser	
+
+- Everything above, plus manage their own club: announcements, events, requirements, recruitment, club info, members, attendance, answers
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Super admin
+
+= Everything above for every club, plus add clubs, change club status and assign staff
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+SET UP
+
+
+1. Install the prerequisites
+ - Git
+ - Visual Studio (or Build Tools) with the Desktop development with C++ workload 
+ - vcpkg, installed at C:\vcpkg I used command prompt
+ - MySQL Server 8.0.16 or newer
+ - VS Code with the C/C++, CMake Tools and SQLTools extensions
+2. Get the code
+ - git clone https://github.com/<your-username>/<your-repo>.git
+ - cd <your-repo>
+ - you can use cmd for this
+   
+3. Create the database
+
+ - mysql -u root -p < sql/dlsl_club_finder.sql
+
+4. Add your settings
+
+ - copy src\config.example.h src\config.h
+
+Open src/config.h and set your MySQL password (DB_PASS). The Gmail settings (SMTP_USER, SMTP_PASS) are optional: while they keep their placeholder values no emails are sent, and the notifications on the site still work. For Gmail, use an App password Google Account, Security, 2-Step Verification, App passwords,  and not your normal password.
+
+5. Install the libraries
+
+ - cd C:\vcpkg
+ - vcpkg install crow:x64-windows-static
+ - vcpkg install libsodium:x64-windows-static
+ - vcpkg install curl:x64-windows-static
+ - vcpkg install "mysql-connector-cpp[jdbc]:x64-windows-static"
+
+6. Build
+
+From the project folder:
+
+cmake -B build -S . -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-windows-static
+cmake --build build --config Debug
+
+In VS Code: run CMake: Configure, then press F7. If you move the project, delete the build folder first.
+
+7. Run
+
+Run it from the project folder so it can find the static folder:
+ - .\build\Debug\club_finder.exe
+
+Open http://localhost:8080. You are sent to the login page.
+
+8. Create the first accounts
+
+The sample users in the SQL file cannot log in. Sign up on the website with a DLSL email, then give the account a role in MySQL.
+How to set up
+
+These steps are for Windows.
+
+1. Install the prerequisites
+Git
+Visual Studio (or Build Tools) with the Desktop development with C++ workload (this includes CMake)
+vcpkg, installed at C:\vcpkg
+MySQL Server 8.0.16 or newer
+Optional: VS Code with the C/C++, CMake Tools and SQLTools extensions
+2. Get the code
+bash
+git clone https://github.com/<your-username>/<your-repo>.git
+cd <your-repo>
+3. Create the database
+bash
+mysql -u root -p < sql/dlsl_club_finder.sql
+
+Running this script again erases the data and rebuilds the database.
+
+4. Add your settings
+bash
+copy src\config.example.h src\config.h
+
+Open src/config.h and set your MySQL password (DB_PASS). The Gmail settings (SMTP_USER, SMTP_PASS) are optional: while they keep their placeholder values no emails are sent, and the notifications on the site still work. For Gmail, use an App password (Google Account, Security, 2-Step Verification, App passwords), not your normal password.
+
+Never commit src/config.h. It contains passwords. The included .gitignore excludes it.
+
+5. Install the libraries
+bash
+cd C:\vcpkg
+vcpkg install crow:x64-windows-static
+vcpkg install libsodium:x64-windows-static
+vcpkg install curl:x64-windows-static
+vcpkg install "mysql-connector-cpp[jdbc]:x64-windows-static"
+
+The MySQL connector takes a long time to build. Keep the :x64-windows-static ending on every package.
+
+6. Build
+
+From the project folder:
+
+bash
+cmake -B build -S . -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-windows-static
+cmake --build build --config Debug
+
+(In VS Code: run CMake: Configure, then press F7. If you move the project, delete the build folder first.)
+
+7. Run
+
+Run it from the project folder so it can find the static folder:
+
+bash
+.\build\Debug\club_finder.exe
+
+Open http://localhost:8080. You are sent to the login page.
+
+8. Create the first accounts
+
+The sample users in the SQL file cannot log in. Sign up on the website with a DLSL email, then give the account a role in MySQL.
+
+How to set up
+
+These steps are for Windows.
+
+1. Install the prerequisites
+Git
+Visual Studio (or Build Tools) with the Desktop development with C++ workload (this includes CMake)
+vcpkg, installed at C:\vcpkg
+MySQL Server 8.0.16 or newer
+Optional: VS Code with the C/C++, CMake Tools and SQLTools extensions
+2. Get the code
+bash
+git clone https://github.com/<your-username>/<your-repo>.git
+cd <your-repo>
+3. Create the database
+bash
+mysql -u root -p < sql/dlsl_club_finder.sql
+
+Running this script again erases the data and rebuilds the database.
+
+4. Add your settings
+bash
+copy src\config.example.h src\config.h
+
+Open src/config.h and set your MySQL password (DB_PASS). The Gmail settings (SMTP_USER, SMTP_PASS) are optional: while they keep their placeholder values no emails are sent, and the notifications on the site still work. For Gmail, use an App password (Google Account, Security, 2-Step Verification, App passwords), not your normal password.
+
+Never commit src/config.h. It contains passwords. The included .gitignore excludes it.
+
+5. Install the libraries
+bash
+cd C:\vcpkg
+vcpkg install crow:x64-windows-static
+vcpkg install libsodium:x64-windows-static
+vcpkg install curl:x64-windows-static
+vcpkg install "mysql-connector-cpp[jdbc]:x64-windows-static"
+
+The MySQL connector takes a long time to build. Keep the :x64-windows-static ending on every package.
+
+6. Build
+
+From the project folder:
+
+bash
+cmake -B build -S . -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-windows-static
+cmake --build build --config Debug
+
+(In VS Code: run CMake: Configure, then press F7. If you move the project, delete the build folder first.)
+
+7. Run
+
+Run it from the project folder so it can find the static folder:
+
+bash
+.\build\Debug\club_finder.exe
+
+Open http://localhost:8080. You are sent to the login page.
+
+8. Create the first accounts
+
+The sample users in the SQL file cannot log in. Sign up on the website with a DLSL email, then give the account a role in MySQL.
+How to set up
+
+These steps are for Windows.
+
+1. Install the prerequisites
+Git
+Visual Studio (or Build Tools) with the Desktop development with C++ workload (this includes CMake)
+vcpkg, installed at C:\vcpkg
+MySQL Server 8.0.16 or newer
+Optional: VS Code with the C/C++, CMake Tools and SQLTools extensions
+2. Get the code
+bash
+git clone https://github.com/<your-username>/<your-repo>.git
+cd <your-repo>
+3. Create the database
+bash
+mysql -u root -p < sql/dlsl_club_finder.sql
+
+Running this script again erases the data and rebuilds the database.
+
+4. Add your settings
+bash
+copy src\config.example.h src\config.h
+
+Open src/config.h and set your MySQL password (DB_PASS). The Gmail settings (SMTP_USER, SMTP_PASS) are optional: while they keep their placeholder values no emails are sent, and the notifications on the site still work. For Gmail, use an App password (Google Account, Security, 2-Step Verification, App passwords), not your normal password.
+
+Never commit src/config.h. It contains passwords. The included .gitignore excludes it.
+
+5. Install the libraries
+bash
+cd C:\vcpkg
+vcpkg install crow:x64-windows-static
+vcpkg install libsodium:x64-windows-static
+vcpkg install curl:x64-windows-static
+vcpkg install "mysql-connector-cpp[jdbc]:x64-windows-static"
+
+The MySQL connector takes a long time to build. Keep the :x64-windows-static ending on every package.
+
+6. Build
+
+From the project folder:
+
+bash
+cmake -B build -S . -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-windows-static
+cmake --build build --config Debug
+
+(In VS Code: run CMake: Configure, then press F7. If you move the project, delete the build folder first.)
+
+7. Run
+
+Run it from the project folder so it can find the static folder:
+
+bash
+.\build\Debug\club_finder.exe
+
+Open http://localhost:8080. You are sent to the login page.
+
+8. Create the first accounts
+
+The sample users in the SQL file cannot log in. Sign up on the website with a DLSL email, then give the account a role in MySQL.
+
+UPDATE dlsl_club_finder.users SET system_role = 'super_admin' WHERE email = 'you@dlsl.edu.ph';
+
+to use this you can make a text file with the exetension of sql then right click and then attach file and then run query to update the mysql
 
