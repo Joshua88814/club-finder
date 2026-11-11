@@ -1,0 +1,12 @@
+# Passwords and settings: never commit these
+src/config.h
+
+# Build output
+build/
+*.exe
+*.obj
+*.pdb
+
+# Editor and IDE folders
+.vs/
+.vscode/
