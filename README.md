@@ -103,7 +103,7 @@ Club officer or adviser
 
 Super admin
 
-= Everything above for every club, plus add clubs, change club status and assign staff
+ -  Everything above for every club, plus add clubs, change club status and assign staff
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 
