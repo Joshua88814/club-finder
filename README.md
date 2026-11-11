@@ -1,7 +1,7 @@
 PROPONENTS
-Malisa, Joshua Q.
-Cezar, Jared Andrei S.
-Mercader, Dave Evan
+ - Malisa, Joshua Q.
+ - Cezar, Jared Andrei S.
+ - Mercader, Dave Evan
 
 APP MODULES
 
