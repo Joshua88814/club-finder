@@ -114,9 +114,9 @@ These steps are for Windows.
 1. Install the prerequisites
  - Git
  - Visual Studio with the Desktop development with C++ workload 
- - vcpkg, installed at C:\vcpkg
+ - vcpkg, installed at C:\vcpkg using cmd
  - MySQL Server 8.0.16 or newer
- - Optional: VS Code with the C/C++, CMake Tools and SQLTools extensions
+ - VS Code with the C/C++, CMake Tools and SQLTools extensions
    
 2. Get the code
 
@@ -131,11 +131,11 @@ These steps are for Windows.
 
  - copy src\config.example.h src\config.h
 
- - Open src/config.h and set your MySQL password (DB_PASS). The Gmail settings (SMTP_USER, SMTP_PASS) are optional: while they keep their placeholder values no emails are sent, and the notifications on the site still work. For Gmail, use an App password (Google Account, Security, 2-Step Verification, App passwords), not your normal password.
+ - Open src/config.h and set your MySQL password (DB_PASS). The Gmail settings (SMTP_USER, SMTP_PASS) are optional because they keep their placeholder values no emails are sent, and the notifications on the site still work. For Gmail, use an App password by going to Google Account Security, 2-Step Verification, App passwords , not your normal password.
 
 
 5. Install the libraries
-   
+(u can use cmd for this )
  - cd C:\vcpkg
  - vcpkg install crow:x64-windows-static
  - vcpkg install libsodium:x64-windows-static
@@ -149,7 +149,7 @@ From the project folder:
  - cmake -B build -S . -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-windows-static
  - cmake --build build --config Debug
 
-In VS Code: run CMake: Configure, then press F7. If you move the project, delete the build folder first.
+In VS Code  run CMake: Configure, then press F7. If you move the project, delete the build folder first.
 
 7. Run
 
